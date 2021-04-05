@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 #include "ethernet.h"
 
 int main (int argc, char * argv[]) {

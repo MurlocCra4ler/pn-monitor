@@ -1,6 +1,8 @@
-#ifdef _ethernet
-#define _ethernet 1
+#ifndef _ethernet
+#define _ethernet
 
-void init_ethernet();
+int init_ethernet();
+
+void pull_request();
 
 #endif
