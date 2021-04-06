@@ -1,5 +1,5 @@
-#ifndef _ethernet
-#define _ethernet
+#ifndef _ETHERNET
+#define _ETHERNET
 
 int init_ethernet();
 

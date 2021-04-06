@@ -4,7 +4,7 @@ CFLAGS   = -std=c11 -pedantic -Wall -Werror -pthread -g
 LIBS     = -lpthread
 RM       = rm -f
 
-OBJS    = monitor.o ethernet.o
+OBJS    = monitor.o ethernet.o pn-dcp.o
 
 .PHONY: all clean
 
@@ -21,3 +21,4 @@ monitor: $(OBJS)
 
 monitor.o:	monitor.c ethernet.h
 ethernet.o:	ethernet.c ethernet.h
+pn-dcp.o:	pn-dcp.c pn-dcp.h
