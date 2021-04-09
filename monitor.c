@@ -3,9 +3,13 @@
 #include "ethernet.h"
 
 int main (int argc, char * argv[]) {
-    init_ethernet();
+    int err;
+
+    err = init_ethernet();
+    if (err == -1)
+        exit(EXIT_FAILURE);
 
     while (1) {
-        pull_request();
+        handle_requests();
     }
 }
