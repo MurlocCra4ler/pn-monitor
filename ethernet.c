@@ -6,7 +6,7 @@
 #include <sys/ioctl.h>
 #include <netinet/in.h>
 #include <net/ethernet.h>
-#include <net/if.h>
+#include <linux/if.h>
 #include <netinet/ip.h>
 #include <arpa/inet.h>
 #include <errno.h>
@@ -25,6 +25,23 @@ int init_ethernet() {
         perror("init_ethernet: socket");
         return -1;
     }
+
+    return 0;
+}
+
+int get_IP_addr(uint8_t ip_addr[]) {
+    struct ifreq ifr;
+    int err;
+
+    ifr.ifr_addr.sa_family = AF_PACKET;
+    strncpy(ifr.ifr_name, "eth0", IFNAMSIZ-1);
+    err = ioctl(raw_sock, SIOCGIFADDR, &ifr);
+    if (err == -1) {
+        return -1;
+    }
+
+    uint32_t *addr = (uint32_t *)ip_addr;
+    addr[0] = ((struct sockaddr_in *)&ifr.ifr_addr)->sin_addr.s_addr;
 
     return 0;
 }

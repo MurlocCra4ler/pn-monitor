@@ -13,6 +13,8 @@ typedef struct ethernet_hdr
 
 int init_ethernet();
 
+int get_IP_addr(uint8_t ip_addr[]);
+
 void handle_requests();
 
 #endif
